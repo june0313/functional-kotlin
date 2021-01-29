@@ -35,7 +35,7 @@ private fun factorial(n: Int): Int = when {
     else -> n * factorial(n - 1)
 }
 
-fun maximum(items: List<Int>): Int = when {
+private fun maximum(items: List<Int>): Int = when {
     items.isEmpty() -> error("empty list")
     items.size == 1 -> items[0]
     else -> {
@@ -45,3 +45,6 @@ fun maximum(items: List<Int>): Int = when {
         if (head > maxVal) head else maxVal
     }
 }
+
+fun List<Int>.head() = first()
+fun List<Int>.tail() = drop(1)
