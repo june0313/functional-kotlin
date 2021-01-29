@@ -1,13 +1,7 @@
 package _3_recursion
 
 fun main() {
-    println(fiboDynamic(10, IntArray(100)))
-    println(fiboDynamic(15, IntArray(100)))
-
-    println(fiboRecursion(10))
-    println(fiboRecursion(15))
-    println(fiboRecursion(20))
-
+    println(fiboRecursion(30))
 }
 
 private fun fiboDynamic(n: Int, fibo: IntArray): Int {
@@ -21,8 +15,16 @@ private fun fiboDynamic(n: Int, fibo: IntArray): Int {
     return fibo[n]
 }
 
-private fun fiboRecursion(n: Int): Int = when (n) {
-    0 -> 0
-    1 -> 1
-    else -> fiboRecursion(n - 1) + fiboRecursion(n - 2)
+var memo = Array(1000) { -1 }
+
+private fun fiboRecursion(n: Int): Int {
+    return when {
+        n == 0 -> 0
+        n == 1 -> 1
+        memo[n] != -1 -> memo[n]
+        else -> {
+            memo[n] = fiboRecursion(n - 2) + fiboRecursion(n - 1)
+            memo[n]
+        }
+    }
 }
