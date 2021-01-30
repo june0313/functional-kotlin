@@ -48,3 +48,6 @@ private fun maximum(items: List<Int>): Int = when {
 
 fun List<Int>.head() = first()
 fun List<Int>.tail() = drop(1)
+
+fun String.head() = first()
+fun String.tail() = drop(1)
